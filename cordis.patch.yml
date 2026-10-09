@@ -1,0 +1,3 @@
+- insert:
+    - id: dsh-scheduler
+      name: '@local/dsh-scheduler'

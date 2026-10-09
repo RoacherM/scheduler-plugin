@@ -1,0 +1,41 @@
+{
+  "name": "@local/dsh-scheduler",
+  "version": "0.1.0",
+  "description": "Scheduled agent tasks for DSH: create them in natural language, each run starts a fresh session in the task's workspace and can use connectors",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./dist/host.js",
+    "./client": "./client.js"
+  },
+  "files": [
+    "dist/host.js",
+    "client.js",
+    "cordis.patch.yml"
+  ],
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "node --test --test-force-exit test/"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-sidebar",
+        "@deepseek-ai/dsh-client-ui-workspace",
+        "@deepseek-ai/dsh-client-ui-tool"
+      ]
+    }
+  },
+  "devDependencies": {
+    "croner": "^10.0.1",
+    "esbuild": "^0.28.2",
+    "jsdom": "^30.1.1",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  }
+}
